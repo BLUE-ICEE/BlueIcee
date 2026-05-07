@@ -1,5 +1,7 @@
 console.log("Blue Icee Loaded ✨");
 
+/* THEMES */
+
 function setTheme(theme) {
 
   const body = document.body;
@@ -29,6 +31,76 @@ function setTheme(theme) {
 
     body.style.background =
       'linear-gradient(to bottom, #2a1630, #52305d, #9158a1, #ff9ed6)';
+
+  }
+
+}
+
+/* LOGIN MODAL */
+
+function openLogin() {
+
+  document
+    .getElementById('loginModal')
+    .style.display = 'flex';
+
+}
+
+/* SIGN UP */
+
+async function signup() {
+
+  const email =
+    document.getElementById('email').value;
+
+  const password =
+    document.getElementById('password').value;
+
+  const { data, error } =
+    await supabaseClient.auth.signUp({
+
+      email: email,
+      password: password
+
+    });
+
+  if (error) {
+
+    alert(error.message);
+
+  } else {
+
+    alert('Account created successfully ✨');
+
+  }
+
+}
+
+/* LOGIN */
+
+async function login() {
+
+  const email =
+    document.getElementById('email').value;
+
+  const password =
+    document.getElementById('password').value;
+
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+
+      email: email,
+      password: password
+
+    });
+
+  if (error) {
+
+    alert(error.message);
+
+  } else {
+
+    alert('Logged in successfully ❄️');
 
   }
 
