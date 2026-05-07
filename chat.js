@@ -1,6 +1,6 @@
 let currentRealm = 'general';
 
-/* LOAD */
+/* LOAD MESSAGES */
 
 async function loadMessages() {
 
@@ -18,57 +18,90 @@ async function loadMessages() {
         ascending: true
       });
 
-  if (data) {
+  if (error) {
 
-    data.forEach(msg => {
+    console.error(error);
 
-      const div =
-        document.createElement('div');
-
-      div.className = 'message';
-
-      div.innerHTML = `
-        <strong>${msg.username}</strong>
-        <p>${msg.text}</p>
-      `;
-
-      chat.appendChild(div);
-
-    });
+    return;
 
   }
 
+  data.forEach(msg => {
+
+    const div =
+      document.createElement('div');
+
+    div.className = 'message';
+
+    div.innerHTML = `
+      <strong>${msg.username}</strong>
+      <p>${msg.text}</p>
+    `;
+
+    chat.appendChild(div);
+
+  });
+
 }
 
-/* SEND */
+/* SEND MESSAGE */
 
 async function sendMessage() {
 
   const input =
     document.getElementById('messageInput');
 
-  const text = input.value;
+  const text =
+    input.value.trim();
 
   if (!text) return;
 
+  /* CHECK USER */
+
   const {
-    data: { user }
+    data: { user },
+    error: userError
   } =
     await supabaseClient.auth.getUser();
 
-  await supabaseClient
-    .from('messages')
-    .insert([{
+  if (!user) {
 
-      text: text,
+    alert(
+      'You must login first ❄️'
+    );
 
-      username:
-        user.email,
+    return;
 
-      realm:
-        currentRealm
+  }
 
-    }]);
+  /* INSERT MESSAGE */
+
+  const { error } =
+    await supabaseClient
+      .from('messages')
+      .insert([{
+
+        text: text,
+
+        username:
+          user.email,
+
+        realm:
+          currentRealm
+
+      }]);
+
+  if (error) {
+
+    console.error(error);
+
+    alert(
+      'Message failed to send'
+    );
+
+    return;
+
+  }
 
   input.value = '';
 
@@ -76,7 +109,7 @@ async function sendMessage() {
 
 }
 
-/* REALM SWITCH */
+/* SWITCH REALM */
 
 function switchRealm(realm) {
 
@@ -99,7 +132,7 @@ supabaseClient
       table: 'messages'
     },
 
-    payload => {
+    () => {
 
       loadMessages();
 
@@ -107,5 +140,7 @@ supabaseClient
   )
 
   .subscribe();
+
+/* INITIAL LOAD */
 
 loadMessages();
