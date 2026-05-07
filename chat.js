@@ -1,6 +1,6 @@
 let currentRealm = 'general';
 
-/* LOAD MESSAGES */
+/* LOAD */
 
 async function loadMessages() {
 
@@ -76,7 +76,7 @@ async function sendMessage() {
 
 }
 
-/* SWITCH REALM */
+/* REALM SWITCH */
 
 function switchRealm(realm) {
 
