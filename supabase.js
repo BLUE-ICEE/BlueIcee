@@ -1,8 +1,8 @@
 const SUPABASE_URL =
-  'https://YOURPROJECT.supabase.co'
+  'https://qxplmvnwzvyjsqfwqbva.supabase.co/rest/v1/'
 
 const SUPABASE_KEY =
-  'YOUR_LONG_ANON_KEY'
+  'sb_publishable_i3SzWJgFFcwn_fOZRS0KBg_9CunDPNk'
 
 const supabaseClient =
   supabase.createClient(
