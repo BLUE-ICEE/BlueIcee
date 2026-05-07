@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Blue Icee Chat</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="supabase.js"></script>
+
+  <script defer src="chat.js"></script>
+
+</head>
+
+<body>
+
+  <div class="background-glow"></div>
+
+  <div class="chat-page">
+
+    <div class="chat-sidebar">
+
+      <h2>Realms</h2>
+
+      <button onclick="switchRealm('general')">
+        ❄️ General
+      </button>
+
+      <button onclick="switchRealm('kpop')">
+        🎤 K-Pop
+      </button>
+
+      <button onclick="switchRealm('cozy')">
+        ☕ Cozy
+      </button>
+
+      <button onclick="switchRealm('arcade')">
+        🕹️ Arcade
+      </button>
+
+    </div>
+
+    <div class="chat-container">
+
+      <div
+        class="chat-messages"
+        id="chatMessages"
+      >
+      </div>
+
+      <div class="chat-input-area">
+
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Send a message..."
+        />
+
+        <button onclick="sendMessage()">
+          Send
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
