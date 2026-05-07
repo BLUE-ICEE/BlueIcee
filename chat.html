@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   />
 
-  <title>Blue Icee Realms</title>
+  <title>Blue Icee</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -22,58 +22,48 @@
 
 </head>
 
-<body class="chat-body">
+<body class="discord-layout">
 
-  <!-- SERVER SIDEBAR -->
+  <!-- LEFT SERVER BAR -->
 
-  <div class="server-bar">
+  <aside class="server-sidebar">
 
-    <div class="server-icon active">
-      ❄️
+    <div class="server-logo">
+      BI
     </div>
 
-    <div class="server-icon">
-      🎤
-    </div>
+    <div class="server-divider"></div>
 
-    <div class="server-icon">
-      ☕
-    </div>
+    <div class="server-button active"></div>
 
-    <div class="server-icon">
-      🕹️
-    </div>
+    <div class="server-button"></div>
 
-    <div class="server-icon">
-      💖
-    </div>
+    <div class="server-button"></div>
 
-  </div>
+    <div class="server-button"></div>
+
+  </aside>
 
   <!-- CHANNEL SIDEBAR -->
 
-  <div class="channel-sidebar">
+  <aside class="channel-sidebar">
 
-    <div class="sidebar-logo">
-
-      <div class="logo-circle"></div>
-
-      <h2>Blue Icee</h2>
-
+    <div class="server-name">
+      Blue Icee
     </div>
 
-    <div class="channel-group">
+    <div class="channel-section">
 
-      <p class="channel-title">
+      <span class="section-title">
         REALMS
-      </p>
+      </span>
 
       <button onclick="switchRealm('general')">
         # general
       </button>
 
       <button onclick="switchRealm('kpop')">
-        # k-pop
+        # kpop
       </button>
 
       <button onclick="switchRealm('cozy')">
@@ -86,88 +76,105 @@
 
     </div>
 
-  </div>
+    <div class="profile-bar">
 
-  <!-- MAIN CHAT -->
+      <div class="profile-avatar"></div>
 
-  <div class="main-chat">
+      <div class="profile-info">
 
-    <div class="chat-header">
+        <strong>User</strong>
 
-      <h2 id="realmName">
-        # general
-      </h2>
+        <span>online</span>
 
-      <p>
-        icy realm discussions ✨
-      </p>
+      </div>
 
     </div>
 
-    <div
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="chat-main">
+
+    <!-- TOP BAR -->
+
+    <header class="chat-topbar">
+
+      <div class="channel-current">
+
+        <span>#</span>
+
+        <h2 id="realmName">
+          general
+        </h2>
+
+      </div>
+
+    </header>
+
+    <!-- MESSAGES -->
+
+    <section
       class="chat-messages"
       id="chatMessages"
     >
-    </div>
+    </section>
 
-    <div class="chat-input-area">
+    <!-- INPUT -->
 
-      <button class="chat-icon">
-        😊
-      </button>
+    <div class="chat-input-wrap">
 
-      <button class="chat-icon">
-        📷
-      </button>
+      <div class="chat-input-box">
 
-      <input
-        type="text"
-        id="messageInput"
-        placeholder="Message realm..."
-      />
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Message #general"
+        />
 
-      <button
-        class="send-btn"
-        onclick="sendMessage()"
-      >
-        Send
-      </button>
+        <button onclick="sendMessage()">
+          Send
+        </button>
+
+      </div>
 
     </div>
 
-  </div>
+  </main>
 
   <!-- MEMBERS -->
 
-  <div class="members-sidebar">
+  <aside class="members-panel">
 
-    <h3>ONLINE</h3>
+    <div class="members-title">
+      ONLINE — 3
+    </div>
 
-    <div class="member">
+    <div class="member-item">
 
-      <div class="member-pfp"></div>
+      <div class="member-avatar"></div>
 
-      <span>Ice Princess</span>
+      <span>Icey</span>
 
     </div>
 
-    <div class="member">
+    <div class="member-item">
 
-      <div class="member-pfp"></div>
+      <div class="member-avatar"></div>
 
-      <span>KPop Bunny</span>
-
-    </div>
-
-    <div class="member">
-
-      <div class="member-pfp"></div>
-
-      <span>FrostyCat</span>
+      <span>Winter</span>
 
     </div>
 
-  </div>
+    <div class="member-item">
+
+      <div class="member-avatar"></div>
+
+      <span>Frost</span>
+
+    </div>
+
+  </aside>
 
 </body>
 
