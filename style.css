@@ -352,3 +352,37 @@ body {
   background: #2c90b8;
   border-radius: 999px;
 }
+/* THEME SWITCHER */
+
+.theme-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-switcher button {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+
+  backdrop-filter: blur(20px);
+
+  transition: 0.3s;
+}
+
+.theme-switcher button:hover {
+  transform: scale(1.1);
+
+  background:
+    rgba(255,255,255,0.15);
+}
