@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #dff7ff,
+      #9fe5ff,
+      #63c7ff
+    );
+
+  overflow-x: hidden;
+
+  color: white;
+}
+
+.background-glow {
+  position: fixed;
+  width: 800px;
+  height: 800px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.35),
+      transparent 70%
+    );
+
+  top: -200px;
+  left: -200px;
+
+  pointer-events: none;
+}
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 60px;
+
+  backdrop-filter: blur(20px);
+
+  background: rgba(255,255,255,0.1);
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.2);
+
+  z-index: 1000;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-circle {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #9fe5ff
+    );
+
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.7);
+}
+
+.logo-section h1 {
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+}
+
+.glass-card {
+  width: 100%;
+  max-width: 900px;
+
+  padding: 80px;
+
+  border-radius: 40px;
+
+  backdrop-filter: blur(24px);
+
+  background:
+    rgba(255,255,255,0.12);
+
+  border:
+    1px solid rgba(255,255,255,0.2);
+
+  text-align: center;
+
+  box-shadow:
+    0 0 60px rgba(255,255,255,0.15);
+}
+
+.glass-card h2 {
+  font-size: 90px;
+  font-weight: 900;
+
+  margin-bottom: 25px;
+}
+
+.glass-card p {
+  font-size: 28px;
+  line-height: 1.5;
+
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+
+  padding: 18px 34px;
+
+  border-radius: 999px;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.primary-btn {
+  background: white;
+  color: #46a9d9;
+}
+
+.secondary-btn {
+  background:
+    rgba(255,255,255,0.15);
+
+  color: white;
+
+  border:
+    1px solid rgba(255,255,255,0.25);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: scale(1.05);
+}
+
+.realms-section {
+  padding: 120px 60px;
+}
+
+.realms-section h3 {
+  font-size: 48px;
+  margin-bottom: 40px;
+}
+
+.realm-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 30px;
+}
+
+.realm-card {
+  padding: 35px;
+
+  border-radius: 30px;
+
+  backdrop-filter: blur(20px);
+
+  background:
+    rgba(255,255,255,0.12);
+
+  border:
+    1px solid rgba(255,255,255,0.2);
+
+  transition: 0.3s;
+}
+
+.realm-card:hover {
+  transform: translateY(-8px);
+}
+
+.realm-card h4 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.realm-card p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.floating {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
