@@ -36,13 +36,36 @@ function setTheme(theme) {
 
 }
 
-/* LOGIN MODAL */
+/* MODAL */
 
 function openLogin() {
 
   document
     .getElementById('loginModal')
     .style.display = 'flex';
+
+}
+
+function closeLogin() {
+
+  document
+    .getElementById('loginModal')
+    .style.display = 'none';
+
+}
+
+/* CLOSE IF CLICK OUTSIDE */
+
+window.onclick = function(event) {
+
+  const modal =
+    document.getElementById('loginModal');
+
+  if (event.target === modal) {
+
+    closeLogin();
+
+  }
 
 }
 
@@ -71,6 +94,8 @@ async function signup() {
   } else {
 
     alert('Account created successfully ✨');
+
+    closeLogin();
 
   }
 
@@ -101,6 +126,8 @@ async function login() {
   } else {
 
     alert('Logged in successfully ❄️');
+
+    closeLogin();
 
   }
 
