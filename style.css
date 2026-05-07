@@ -526,3 +526,18 @@ body {
   }
 
 }
+/* CLOSE BUTTON */
+
+.close-modal {
+  align-self: flex-end;
+
+  background: transparent;
+
+  border: none;
+
+  color: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+}
