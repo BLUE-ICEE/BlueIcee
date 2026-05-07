@@ -36,7 +36,7 @@ function setTheme(theme) {
 
 }
 
-/* MODAL */
+/* LOGIN MODAL */
 
 function openLogin() {
 
@@ -54,7 +54,7 @@ function closeLogin() {
 
 }
 
-/* CLOSE IF CLICK OUTSIDE */
+/* CLOSE ON OUTSIDE CLICK */
 
 window.onclick = function(event) {
 
@@ -69,7 +69,7 @@ window.onclick = function(event) {
 
 }
 
-/* SIGN UP */
+/* SIGNUP */
 
 async function signup() {
 
@@ -89,15 +89,19 @@ async function signup() {
 
   if (error) {
 
+    console.error(error);
+
     alert(error.message);
 
-  } else {
-
-    alert('Account created successfully ✨');
-
-    closeLogin();
+    return;
 
   }
+
+  alert(
+    'Account created successfully ✨'
+  );
+
+  closeLogin();
 
 }
 
@@ -121,14 +125,18 @@ async function login() {
 
   if (error) {
 
+    console.error(error);
+
     alert(error.message);
 
-  } else {
-
-    alert('Logged in successfully ❄️');
-
-    closeLogin();
+    return;
 
   }
+
+  alert(
+    'Logged in successfully ❄️'
+  );
+
+  closeLogin();
 
 }
