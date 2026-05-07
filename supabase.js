@@ -1,7 +1,11 @@
-const SUPABASE_URL = 'PASTE_YOUR_URL'
-const SUPABASE_KEY = 'PASTE_YOUR_ANON_KEY'
+const SUPABASE_URL =
+  'https://YOURPROJECT.supabase.co'
 
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-)
+const SUPABASE_KEY =
+  'YOUR_LONG_ANON_KEY'
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  )
