@@ -1,64 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Blue Icee</title>
 
-  <link rel="stylesheet" href="style.css"/>
-  
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
   <script src="supabase.js"></script>
-  
+
   <script defer src="script.js"></script>
+
 </head>
 
 <body>
 
   <div class="background-glow"></div>
 
+  <!-- NAVBAR -->
+
   <nav class="navbar">
 
     <div class="logo-section">
+
       <div class="logo-circle"></div>
+
       <h1>Blue Icee</h1>
+
     </div>
-<div class="theme-switcher">
 
-  <button onclick="setTheme('dark')">
-    🌑
-  </button>
+    <!-- THEMES -->
 
-  <button onclick="setTheme('frost')">
-    ❄️
-  </button>
+    <div class="theme-switcher">
 
-  <button onclick="setTheme('aurora')">
-    🌌
-  </button>
+      <button onclick="setTheme('dark')">
+        🌑
+      </button>
 
-  <button onclick="setTheme('pink')">
-    💖
-  </button>
+      <button onclick="setTheme('frost')">
+        ❄️
+      </button>
 
-</div>
-<nav class="navbar">
+      <button onclick="setTheme('aurora')">
+        🌌
+      </button>
 
-  <div class="logo-section">
-    ...
-  </div>
+      <button onclick="setTheme('pink')">
+        💖
+      </button>
 
-  <div class="theme-switcher">
-    ...
-  </div>
+    </div>
 
-  <div class="nav-links">
-    ...
-  </div>
+    <!-- LINKS -->
 
-</nav>
+    <div class="nav-links">
+
+      <a href="#">Home</a>
+
+      <a href="#">Realms</a>
+
+      <a href="#">Arcade</a>
+
+      <a href="#">Inventory</a>
+
+      <a href="#">Profile</a>
+
+      <button
+        class="login-btn"
+        onclick="openLogin()"
+      >
+        Login
+      </button>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
   <main class="hero">
 
     <div class="glass-card floating">
@@ -85,6 +113,8 @@
 
   </main>
 
+  <!-- REALMS -->
+
   <section class="realms-section">
 
     <h3>Popular Realms</h3>
@@ -92,23 +122,74 @@
     <div class="realm-grid">
 
       <div class="realm-card">
+
         <h4>K-Pop Realm</h4>
-        <p>Trade cards & meet fans</p>
+
+        <p>
+          Trade cards & meet fans
+        </p>
+
       </div>
 
       <div class="realm-card">
+
         <h4>Cozy Realm</h4>
-        <p>Relax and chat together</p>
+
+        <p>
+          Relax and chat together
+        </p>
+
       </div>
 
       <div class="realm-card">
+
         <h4>Arcade Realm</h4>
-        <p>Play mini games & claw machines</p>
+
+        <p>
+          Play mini games & claw machines
+        </p>
+
       </div>
 
     </div>
 
   </section>
 
+  <!-- LOGIN MODAL -->
+
+  <div
+    class="login-modal"
+    id="loginModal"
+  >
+
+    <div class="login-box">
+
+      <h2>Blue Icee Login</h2>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Email"
+      />
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+      />
+
+      <button onclick="signup()">
+        Sign Up
+      </button>
+
+      <button onclick="login()">
+        Login
+      </button>
+
+    </div>
+
+  </div>
+
 </body>
+
 </html>
