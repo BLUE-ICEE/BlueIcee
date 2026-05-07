@@ -684,141 +684,237 @@ body {
 
   color: #07131f;
 }
-/* CHAT PAGE */
+/* DISCORD LAYOUT */
 
-.chat-body {
+.discord-layout {
   display: flex;
 
   height: 100vh;
 
   overflow: hidden;
+
+  background: #313338;
 }
 
-/* SERVER BAR */
+/* SERVER SIDEBAR */
 
-.server-bar {
-  width: 90px;
+.server-sidebar {
+  width: 72px;
 
-  background: rgba(5,10,20,0.95);
+  background: #1e1f22;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  gap: 20px;
+  padding-top: 12px;
 
-  padding-top: 20px;
+  gap: 10px;
 }
 
-.server-icon {
-  width: 58px;
-  height: 58px;
+.server-logo {
+  width: 48px;
+  height: 48px;
 
-  border-radius: 20px;
+  border-radius: 16px;
 
-  background: rgba(255,255,255,0.08);
+  background: linear-gradient(
+    to bottom,
+    #69d7ff,
+    #47bfff
+  );
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 24px;
+  font-weight: 900;
 
-  cursor: pointer;
-
-  transition: 0.3s;
+  color: #06131f;
 }
 
-.server-icon:hover,
-.server-icon.active {
-  background: #49caff;
+.server-divider {
+  width: 32px;
+  height: 2px;
 
-  transform: scale(1.08);
+  background: rgba(255,255,255,0.08);
+
+  border-radius: 999px;
+
+  margin: 6px 0;
 }
 
-/* CHANNELS */
+.server-button {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #2b2d31;
+
+  transition: 0.2s;
+}
+
+.server-button:hover,
+.server-button.active {
+  border-radius: 16px;
+
+  background: #47bfff;
+}
+
+/* CHANNEL SIDEBAR */
 
 .channel-sidebar {
   width: 260px;
 
-  background: rgba(9,18,30,0.92);
+  background: #2b2d31;
+
+  display: flex;
+  flex-direction: column;
 
   border-right:
-    1px solid rgba(255,255,255,0.06);
-
-  padding: 25px;
+    1px solid rgba(255,255,255,0.04);
 }
 
-.sidebar-logo {
+.server-name {
+  height: 48px;
+
   display: flex;
   align-items: center;
 
-  gap: 12px;
+  padding: 0 16px;
 
-  margin-bottom: 35px;
+  font-weight: 700;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.05);
 }
 
-.channel-title {
-  color: rgba(255,255,255,0.45);
+.channel-section {
+  padding: 16px 10px;
 
-  font-size: 13px;
-
-  margin-bottom: 12px;
+  flex: 1;
 }
 
-.channel-group button {
+.section-title {
+  font-size: 12px;
+
+  color: #949ba4;
+
+  padding-left: 8px;
+}
+
+.channel-section button {
   width: 100%;
 
   background: transparent;
 
   border: none;
 
-  color: white;
+  color: #949ba4;
 
   text-align: left;
 
-  padding: 14px;
+  padding: 10px 12px;
 
-  border-radius: 14px;
+  border-radius: 6px;
 
-  margin-bottom: 8px;
+  margin-top: 4px;
+
+  font-size: 16px;
 
   cursor: pointer;
-
-  transition: 0.3s;
 }
 
-.channel-group button:hover {
-  background:
-    rgba(255,255,255,0.08);
+.channel-section button:hover {
+  background: #35373c;
+
+  color: white;
 }
 
-/* MAIN CHAT */
+/* PROFILE */
 
-.main-chat {
+.profile-bar {
+  height: 52px;
+
+  background: #232428;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 10px;
+}
+
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    to bottom,
+    #79e0ff,
+    #4abfff
+  );
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info strong {
+  font-size: 14px;
+}
+
+.profile-info span {
+  font-size: 12px;
+
+  color: #949ba4;
+}
+
+/* MAIN */
+
+.chat-main {
   flex: 1;
 
   display: flex;
   flex-direction: column;
 
-  background:
-    rgba(10,18,28,0.7);
+  background: #313338;
 }
 
-.chat-header {
-  padding: 22px 30px;
+/* TOPBAR */
+
+.chat-topbar {
+  height: 48px;
 
   border-bottom:
     1px solid rgba(255,255,255,0.05);
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 18px;
 }
 
-.chat-header h2 {
-  font-size: 28px;
+.channel-current {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
 }
 
-.chat-header p {
-  color:
-    rgba(255,255,255,0.6);
+.channel-current span {
+  color: #949ba4;
+
+  font-size: 26px;
+}
+
+.channel-current h2 {
+  font-size: 16px;
 }
 
 /* MESSAGES */
@@ -828,135 +924,129 @@ body {
 
   overflow-y: auto;
 
-  padding: 25px;
+  padding: 20px;
 }
 
 .message {
-  margin-bottom: 20px;
+  padding: 10px 14px;
 
-  padding: 18px;
+  border-radius: 8px;
 
-  border-radius: 18px;
+  margin-bottom: 8px;
 
-  background:
-    rgba(255,255,255,0.04);
+  transition: 0.2s;
+}
 
-  border:
-    1px solid rgba(255,255,255,0.04);
+.message:hover {
+  background: rgba(255,255,255,0.03);
 }
 
 .message strong {
-  color: #7de3ff;
+  color: #ffffff;
+
+  font-size: 15px;
 }
 
 .message p {
-  margin-top: 6px;
+  margin-top: 4px;
+
+  color: #dbdee1;
 
   line-height: 1.5;
 }
 
 /* INPUT */
 
-.chat-input-area {
+.chat-input-wrap {
   padding: 20px;
+}
+
+.chat-input-box {
+  background: #383a40;
+
+  border-radius: 8px;
 
   display: flex;
   align-items: center;
 
-  gap: 12px;
-
-  background:
-    rgba(5,10,20,0.95);
+  padding: 0 16px;
 }
 
-.chat-input-area input {
+.chat-input-box input {
   flex: 1;
 
-  padding: 18px;
-
-  border-radius: 18px;
+  background: transparent;
 
   border: none;
 
-  background:
-    rgba(255,255,255,0.08);
+  height: 52px;
 
   color: white;
 
-  font-size: 16px;
+  font-size: 15px;
+
+  outline: none;
 }
 
-.chat-icon,
-.send-btn {
+.chat-input-box button {
+  background: #47bfff;
+
   border: none;
+
+  color: #06131f;
+
+  font-weight: 700;
+
+  padding: 10px 16px;
+
+  border-radius: 6px;
 
   cursor: pointer;
-
-  border-radius: 14px;
-
-  padding: 14px 18px;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  color: white;
-
-  transition: 0.3s;
-}
-
-.send-btn {
-  background:
-    linear-gradient(
-      to bottom,
-      #7ce7ff,
-      #47c9ff
-    );
-
-  color: #04131f;
-
-  font-weight: 800;
 }
 
 /* MEMBERS */
 
-.members-sidebar {
-  width: 250px;
+.members-panel {
+  width: 240px;
 
-  background:
-    rgba(8,15,25,0.92);
+  background: #2b2d31;
 
-  border-left:
-    1px solid rgba(255,255,255,0.06);
-
-  padding: 25px;
+  padding: 20px 12px;
 }
 
-.members-sidebar h3 {
-  margin-bottom: 20px;
+.members-title {
+  color: #949ba4;
 
-  color:
-    rgba(255,255,255,0.55);
-}
-
-.member {
-  display: flex;
-  align-items: center;
-
-  gap: 12px;
+  font-size: 12px;
 
   margin-bottom: 16px;
 }
 
-.member-pfp {
-  width: 42px;
-  height: 42px;
+.member-item {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px;
+
+  border-radius: 6px;
+}
+
+.member-item:hover {
+  background: #35373c;
+}
+
+.member-avatar {
+  width: 32px;
+  height: 32px;
 
   border-radius: 50%;
 
-  background:
-    linear-gradient(
-      to bottom,
-      #8de8ff,
-      #4ecfff
-    );
+  background: linear-gradient(
+    to bottom,
+    #7ee2ff,
+    #49bfff
+  );
+}
 }
