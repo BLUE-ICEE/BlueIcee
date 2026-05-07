@@ -54,7 +54,7 @@ function closeLogin() {
 
 }
 
-/* CLOSE ON OUTSIDE CLICK */
+/* CLOSE OUTSIDE */
 
 window.onclick = function(event) {
 
@@ -79,6 +79,16 @@ async function signup() {
   const password =
     document.getElementById('password').value;
 
+  if (!email || !password) {
+
+    alert(
+      'Enter email and password'
+    );
+
+    return;
+
+  }
+
   const { data, error } =
     await supabaseClient.auth.signUp({
 
@@ -98,7 +108,7 @@ async function signup() {
   }
 
   alert(
-    'Account created successfully ✨'
+    'Signup successful ✨'
   );
 
   closeLogin();
@@ -114,6 +124,16 @@ async function login() {
 
   const password =
     document.getElementById('password').value;
+
+  if (!email || !password) {
+
+    alert(
+      'Enter email and password'
+    );
+
+    return;
+
+  }
 
   const { data, error } =
     await supabaseClient.auth.signInWithPassword({
