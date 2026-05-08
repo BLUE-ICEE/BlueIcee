@@ -5,11 +5,13 @@ let currentRealm = 'general';
 async function loadMessages() {
 
   const chat =
-    document.getElementById('chatMessages');
+    document.getElementById(
+      'chatMessages'
+    );
 
   chat.innerHTML = '';
 
-  const { data, error } =
+  const { data } =
     await supabaseClient
       .from('messages')
       .select('*')
@@ -18,94 +20,62 @@ async function loadMessages() {
         ascending: true
       });
 
-  if (error) {
+  if (data) {
 
-    console.error(error);
+    data.forEach(msg => {
 
-    return;
+      const div =
+        document.createElement('div');
+
+      div.className = 'message';
+
+      div.innerHTML = `
+        <strong>${msg.username}</strong>
+        <p>${msg.text}</p>
+      `;
+
+      chat.appendChild(div);
+
+    });
 
   }
 
-  data.forEach(msg => {
-
-    const div =
-      document.createElement('div');
-
-    div.className = 'message';
-
-    div.innerHTML = `
-      <strong>${msg.username}</strong>
-      <p>${msg.text}</p>
-    `;
-
-    chat.appendChild(div);
-
-  });
-
 }
 
-/* SEND MESSAGE */
+/* SEND */
 
 async function sendMessage() {
 
   const input =
-    document.getElementById('messageInput');
+    document.getElementById(
+      'messageInput'
+    );
 
-  const text =
-    input.value.trim();
+  const text = input.value;
 
   if (!text) return;
 
-  /* CHECK USER */
-
   const {
-    data: { user },
-    error: userError
+    data: { user }
   } =
     await supabaseClient.auth.getUser();
 
-  if (!user) {
+  const username =
+    user?.email || 'Guest';
 
-    alert(
-      'You must login first ❄️'
-    );
+  await supabaseClient
+    .from('messages')
+    .insert([{
 
-    return;
+      text: text,
 
-  }
+      username: username,
 
-  /* INSERT MESSAGE */
+      realm: currentRealm
 
-  const { error } =
-    await supabaseClient
-      .from('messages')
-      .insert([{
-
-        text: text,
-
-        username:
-          user.email,
-
-        realm:
-          currentRealm
-
-      }]);
-
-  if (error) {
-
-    console.error(error);
-
-    alert(
-      'Message failed to send'
-    );
-
-    return;
-
-  }
+    }]);
 
   input.value = '';
-
-  loadMessages();
 
 }
 
@@ -115,14 +85,82 @@ function switchRealm(realm) {
 
   currentRealm = realm;
 
+  document.getElementById(
+    'realmName'
+  ).textContent = realm;
+
   loadMessages();
+
+}
+
+/* ONLINE USERS */
+
+async function updateOnlineUser() {
+
+  const {
+    data: { user }
+  } =
+    await supabaseClient.auth.getUser();
+
+  if (!user) return;
+
+  await supabaseClient
+    .from('online_users')
+    .upsert([{
+
+      email: user.email
+
+    }]);
+
+}
+
+/* LOAD ONLINE USERS */
+
+async function loadOnlineUsers() {
+
+  const panel =
+    document.querySelector(
+      '.members-panel'
+    );
+
+  panel.innerHTML = `
+    <div class="members-title">
+      ONLINE
+    </div>
+  `;
+
+  const { data } =
+    await supabaseClient
+      .from('online_users')
+      .select('*');
+
+  if (data) {
+
+    data.forEach(user => {
+
+      const div =
+        document.createElement('div');
+
+      div.className =
+        'member-item';
+
+      div.innerHTML = `
+        <div class="member-avatar"></div>
+        <span>${user.email}</span>
+      `;
+
+      panel.appendChild(div);
+
+    });
+
+  }
 
 }
 
 /* REALTIME */
 
 supabaseClient
-  .channel('messages-channel')
+  .channel('messages-live')
 
   .on(
     'postgres_changes',
@@ -141,6 +179,30 @@ supabaseClient
 
   .subscribe();
 
-/* INITIAL LOAD */
+supabaseClient
+  .channel('online-live')
+
+  .on(
+    'postgres_changes',
+    {
+      event: '*',
+      schema: 'public',
+      table: 'online_users'
+    },
+
+    () => {
+
+      loadOnlineUsers();
+
+    }
+  )
+
+  .subscribe();
+
+/* START */
+
+updateOnlineUser();
 
 loadMessages();
+
+loadOnlineUsers();
